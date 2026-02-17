@@ -22,7 +22,7 @@
 
     <div class="stats-bar">
         <div class="container">
-            <div class="stats-grid" id="statsGrid">
+            <div class="stats-grid">
                 <div class="stat-item">
                     <h3 id="totalEmcees">-</h3>
                     <p>Total Emcees</p>
@@ -69,7 +69,7 @@
                     <button class="stats-tab" data-tab="by-emcee">By Emcee</button>
                 </div>
 
-                <div class="stats-filters" id="statsFilters">
+                <div class="stats-filters">
                     <select class="filter-select" id="yearFilter">
                         <option value="">All Years</option>
                     </select>
@@ -84,22 +84,6 @@
                 <div class="videos-grid" id="statsVideosGrid">
                     <div class="loading">Loading stats...</div>
                 </div>
-            </div>
-        </div>
-
-        <div id="statsView" style="display: none;">
-            <div class="stats-tabs">
-                <button class="stats-tab active" data-tab="by-year">By Year</button>
-                <button class="stats-tab" data-tab="by-division">By Division</button>
-                <button class="stats-tab" data-tab="by-emcee">By Emcee</button>
-            </div>
-
-            <div class="stats-filters" id="statsFilters">
-                <!-- Dynamic filters based on selected tab -->
-            </div>
-
-            <div class="stats-content" id="statsContent">
-                <div class="loading">Loading stats...</div>
             </div>
         </div>
     </main>

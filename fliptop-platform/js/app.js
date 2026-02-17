@@ -1,5 +1,5 @@
 // FlipTop Community Platform - Vanilla JS Frontend
-const API_BASE = 'http://localhost:8080';
+const API_BASE = '/';
 
 let currentView = 'emcees';
 let currentStatsTab = 'by-year';
@@ -7,39 +7,27 @@ let emceesData = [];
 let videosData = [];
 let currentSearch = '';
 let currentDivision = '';
-let currentStatsTab = 'by-year';
-let currentStatsYear = '';
-let currentStatsDivision = '';
-let currentStatsEmcee = '';
 
-// Format numbers with commas
+// Format numbers
 function formatNumber(num) {
     if (!num) return '0';
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
-// Format date
-function formatDate(dateStr) {
-    if (!dateStr) return '';
-    const date = new Date(dateStr);
-    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
-}
-
 // Fetch API data
 async function fetchAPI(endpoint) {
     try {
-        const response = await fetch(`${API_BASE}${endpoint}`);
-        if (!response.ok) throw new Error('API error');
-        return await response.json();
-    } catch (error) {
-        console.error('API Error:', error);
+        const resp = await fetch(API_BASE + 'api/' + endpoint);
+        return await resp.json();
+    } catch(e) {
+        console.error('API Error:', e);
         return null;
     }
 }
 
 // Load stats
 async function loadStats() {
-    const stats = await fetchAPI('/api/stats');
+    const stats = await fetchAPI('stats');
     if (stats) {
         document.getElementById('totalEmcees').textContent = formatNumber(stats.total_emcees);
         document.getElementById('totalVideos').textContent = formatNumber(stats.total_videos);
@@ -47,9 +35,9 @@ async function loadStats() {
     }
 }
 
-// Load divisions for filter
+// Load divisions
 async function loadDivisions() {
-    const data = await fetchAPI('/api/divisions');
+    const data = await fetchAPI('divisions');
     if (data && data.divisions) {
         const select = document.getElementById('divisionFilter');
         data.divisions.forEach(div => {
@@ -66,20 +54,20 @@ async function loadEmcees() {
     const grid = document.getElementById('emceesGrid');
     grid.innerHTML = '<div class="loading">Loading emcees...</div>';
 
-    let endpoint = `/api/emcees?limit=100`;
-    if (currentSearch) endpoint += `&search=${encodeURIComponent(currentSearch)}`;
-    if (currentDivision) endpoint += `&division=${encodeURIComponent(currentDivision)}`;
+    let endpoint = 'emcees?limit=100';
+    if (currentSearch) endpoint += '&search=' + encodeURIComponent(currentSearch);
+    if (currentDivision) endpoint += '&division=' + encodeURIComponent(currentDivision);
 
     const data = await fetchAPI(endpoint);
     if (data && data.emcees) {
         emceesData = data.emcees;
         renderEmcees(emceesData);
     } else {
-        grid.innerHTML = '<div class="loading">Error loading emcees. Make sure API is running.</div>';
+        grid.innerHTML = '<div class="loading">Error loading emcees</div>';
     }
 }
 
-// Render emcee cards
+// Render emcees
 function renderEmcees(emcees) {
     const grid = document.getElementById('emceesGrid');
     if (!emcees.length) {
@@ -89,9 +77,7 @@ function renderEmcees(emcees) {
 
     grid.innerHTML = emcees.map(emcee => `
         <div class="emcee-card" onclick="openEmceeModal(${emcee.id})">
-            <img src="${emcee.profile_picture || 'https://via.placeholder.com/200x200?text=No+Image'}"
-                 alt="${emcee.name}"
-                 onerror="this.src='https://via.placeholder.com/200x200?text=No+Image'">
+            <img src="${emcee.profile_picture || 'https://via.placeholder.com/200x200?text=No+Image'}" alt="${emcee.name}" onerror="this.src='https://via.placeholder.com/200x200?text=No+Image'">
             <div class="emcee-info">
                 <h3>${emcee.name}</h3>
                 <p class="hometown">${emcee.hometown || 'Unknown'}</p>
@@ -107,19 +93,19 @@ async function loadVideos() {
     const grid = document.getElementById('videosGrid');
     grid.innerHTML = '<div class="loading">Loading videos...</div>';
 
-    let endpoint = `/api/videos?limit=50&sort=views`;
-    if (currentSearch) endpoint += `&search=${encodeURIComponent(currentSearch)}`;
+    let endpoint = 'videos?limit=50&sort=views';
+    if (currentSearch) endpoint += '&search=' + encodeURIComponent(currentSearch);
 
     const data = await fetchAPI(endpoint);
     if (data && data.videos) {
         videosData = data.videos;
         renderVideos(videosData);
     } else {
-        grid.innerHTML = '<div class="loading">Error loading videos. Make sure API is running.</div>';
+        grid.innerHTML = '<div class="loading">Error loading videos</div>';
     }
 }
 
-// Render video cards
+// Render videos
 function renderVideos(videos) {
     const grid = document.getElementById('videosGrid');
     if (!videos.length) {
@@ -147,37 +133,24 @@ function renderVideos(videos) {
 
 // Open emcee modal
 async function openEmceeModal(id) {
-    const data = await fetchAPI(`/api/emcees/${id}`);
+    const data = await fetchAPI('emcees/' + id);
     if (!data || data.error) return;
 
     document.getElementById('modalProfileImg').src = data.profile_picture || 'https://via.placeholder.com/400x250?text=No+Image';
     document.getElementById('modalName').textContent = data.name;
     document.getElementById('modalHometown').textContent = data.hometown || '';
 
-    // Tags
     const tagsContainer = document.getElementById('modalTags');
     tagsContainer.innerHTML = '';
-    if (data.division) {
-        tagsContainer.innerHTML += `<span class="tag">${data.division}</span>`;
-    }
-    if (data.year_joined) {
-        tagsContainer.innerHTML += `<span class="tag">Since ${data.year_joined}</span>`;
-    }
-    if (data.reppin) {
-        tagsContainer.innerHTML += `<span class="tag">${data.reppin}</span>`;
-    }
+    if (data.division) tagsContainer.innerHTML += `<span class="tag">${data.division}</span>`;
+    if (data.year_joined) tagsContainer.innerHTML += `<span class="tag">Since ${data.year_joined}</span>`;
+    if (data.reppin) tagsContainer.innerHTML += `<span class="tag">${data.reppin}</span>`;
 
     document.getElementById('modalDescription').textContent = data.description || 'No description available.';
 
-    // Accomplishments
     const accContainer = document.getElementById('modalAccomplishments');
-    if (data.accomplishments) {
-        accContainer.innerHTML = `<h4>🏆 Accomplishments</h4><p>${data.accomplishments}</p>`;
-    } else {
-        accContainer.innerHTML = '';
-    }
+    accContainer.innerHTML = data.accomplishments ? `<h4>🏆 Accomplishments</h4><p>${data.accomplishments}</p>` : '';
 
-    // Social links
     const socialContainer = document.getElementById('modalSocial');
     socialContainer.innerHTML = '';
     if (data.facebook) socialContainer.innerHTML += `<a href="${data.facebook}" target="_blank">📘 Facebook</a>`;
@@ -185,12 +158,9 @@ async function openEmceeModal(id) {
     if (data.instagram) socialContainer.innerHTML += `<a href="${data.instagram}" target="_blank">📸 Instagram</a>`;
     if (data.youtube) socialContainer.innerHTML += `<a href="${data.youtube}" target="_blank">▶️ YouTube</a>`;
 
-    // Battles
     const battlesContainer = document.getElementById('modalBattles');
     if (data.latest_battles && data.latest_battles.length) {
-        battlesContainer.innerHTML = data.latest_battles.map(battle =>
-            `<div class="battle-item">${battle.title}</div>`
-        ).join('');
+        battlesContainer.innerHTML = data.latest_battles.map(b => `<div class="battle-item">${b.title}</div>`).join('');
     } else {
         battlesContainer.innerHTML = '<div class="battle-item">No recent battles</div>';
     }
@@ -199,7 +169,6 @@ async function openEmceeModal(id) {
     document.body.style.overflow = 'hidden';
 }
 
-// Close modal
 function closeModal() {
     document.getElementById('emceeModal').classList.remove('active');
     document.body.style.overflow = '';
@@ -227,10 +196,10 @@ function switchView(view) {
     }
 }
 
-// Stats View Functions
+// Stats view
 async function loadStatsView() {
     // Load years
-    const yearsData = await fetchAPI('/api/stats/by-year?limit=1');
+    const yearsData = await fetchAPI('stats/by-year?limit=1');
     if (yearsData && yearsData.years) {
         const yearSelect = document.getElementById('yearFilter');
         yearSelect.innerHTML = '<option value="">All Years</option>';
@@ -243,11 +212,11 @@ async function loadStatsView() {
     }
 
     // Load divisions
-    const divData = await fetchAPI('/api/divisions');
-    if (divData && divData.divisions) {
+    const divisionsData = await fetchAPI('divisions');
+    if (divisionsData && divisionsData.divisions) {
         const divSelect = document.getElementById('divisionStatsFilter');
         divSelect.innerHTML = '<option value="">All Divisions</option>';
-        divData.divisions.forEach(div => {
+        divisionsData.divisions.forEach(div => {
             const option = document.createElement('option');
             option.value = div;
             option.textContent = div;
@@ -255,8 +224,8 @@ async function loadStatsView() {
         });
     }
 
-    // Load emcees for dropdown
-    const emceesData = await fetchAPI('/api/emcees?limit=200');
+    // Load emcees
+    const emceesData = await fetchAPI('emcees?limit=200');
     if (emceesData && emceesData.emcees) {
         const emceeSelect = document.getElementById('emceeStatsFilter');
         emceeSelect.innerHTML = '<option value="">Select Emcee</option>';
@@ -278,17 +247,15 @@ async function loadStatsData() {
     let endpoint = '';
     if (currentStatsTab === 'by-year') {
         const year = document.getElementById('yearFilter').value;
-        endpoint = `/api/stats/by-year?limit=20${year ? '&year=' + year : ''}`;
+        endpoint = 'stats/by-year?limit=20' + (year ? '&year=' + year : '');
     } else if (currentStatsTab === 'by-division') {
         const division = document.getElementById('divisionStatsFilter').value;
-        endpoint = `/api/stats/by-division?limit=20${division ? '&division=' + encodeURIComponent(division) : ''}`;
+        const year = document.getElementById('yearFilter').value;
+        endpoint = 'stats/by-division?limit=20' + (division ? '&division=' + encodeURIComponent(division) : '') + (year ? '&year=' + year : '');
     } else if (currentStatsTab === 'by-emcee') {
         const emcee = document.getElementById('emceeStatsFilter').value;
-        if (emcee) {
-            endpoint = `/api/stats/by-emcee?emcee=${encodeURIComponent(emcee)}&limit=20`;
-        } else {
-            endpoint = '/api/stats/by-emcee?limit=20';
-        }
+        const year = document.getElementById('yearFilter').value;
+        endpoint = 'stats/by-emcee?limit=20' + (emcee ? '&emcee=' + encodeURIComponent(emcee) : '') + (year ? '&year=' + year : '');
     }
 
     const data = await fetchAPI(endpoint);
@@ -297,8 +264,8 @@ async function loadStatsData() {
         return;
     }
 
-    // Handle emcee rankings (by-emcee tab without specific emcee selected)
-    if (data.emcees && currentStatsTab === 'by-emcee' && !document.getElementById('emceeStatsFilter').value) {
+    if (data.emcees) {
+        // Emcee rankings
         grid.innerHTML = data.emcees.map((emcee, idx) => `
             <div class="emcee-card" style="cursor: default;">
                 <div class="emcee-info" style="text-align: center;">
@@ -307,22 +274,15 @@ async function loadStatsData() {
                 </div>
             </div>
         `).join('');
-        return;
-    }
-
-    // Handle videos
-    const videos = data.videos || [];
-    if (!videos.length) {
+    } else if (data.videos) {
+        renderStatsVideos(data.videos);
+    } else {
         grid.innerHTML = '<div class="loading">No data found</div>';
-        return;
     }
-
-    renderVideos(videos, 'statsVideosGrid');
 }
 
-// Reusable render function
-function renderVideos(videos, gridId) {
-    const grid = document.getElementById(gridId);
+function renderStatsVideos(videos) {
+    const grid = document.getElementById('statsVideosGrid');
     if (!videos.length) {
         grid.innerHTML = '<div class="loading">No videos found</div>';
         return;
@@ -339,44 +299,35 @@ function renderVideos(videos, gridId) {
                 <div class="video-stats">
                     <span>👁 ${formatNumber(video.views)}</span>
                     <span>👍 ${formatNumber(video.likes)}</span>
-                    <span>💬 ${formatNumber(video.comments)}</span>
                 </div>
             </div>
         </div>
     `).join('');
 }
 
-// Debounce search
+// Debounce
 function debounce(func, wait) {
     let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
+    return function(...args) {
         clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
+        timeout = setTimeout(() => func.apply(this, args), wait);
     };
 }
 
-// Initialize
+// Start app
 async function init() {
     await loadStats();
     await loadDivisions();
     await loadEmcees();
 
-    // Event listeners
     document.querySelectorAll('nav button').forEach(btn => {
         btn.addEventListener('click', () => switchView(btn.dataset.view));
     });
 
     document.getElementById('searchInput').addEventListener('input', debounce((e) => {
         currentSearch = e.target.value;
-        if (currentView === 'emcees') {
-            loadEmcees();
-        } else {
-            loadVideos();
-        }
+        if (currentView === 'emcees') loadEmcees();
+        else loadVideos();
     }, 500));
 
     document.getElementById('divisionFilter').addEventListener('change', (e) => {
@@ -384,39 +335,27 @@ async function init() {
         loadEmcees();
     });
 
-    // Close modal on outside click
     document.getElementById('emceeModal').addEventListener('click', (e) => {
-        if (e.target.classList.contains('modal')) {
-            closeModal();
-        }
+        if (e.target.classList.contains('modal')) closeModal();
     });
 
-    // Close modal on escape
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeModal();
     });
 
-    // Stats tab event listeners
+    // Stats tabs
     document.querySelectorAll('.stats-tab').forEach(tab => {
         tab.addEventListener('click', () => {
             document.querySelectorAll('.stats-tab').forEach(t => t.classList.remove('active'));
             tab.classList.add('active');
             currentStatsTab = tab.dataset.tab;
-
-            // Show/hide appropriate filters
-            document.getElementById('yearFilter').parentElement.style.display = currentStatsTab === 'by-year' ? 'block' : 'none';
-            document.getElementById('divisionStatsFilter').parentElement.style.display = currentStatsTab === 'by-division' ? 'block' : 'none';
-            document.getElementById('emceeStatsFilter').parentElement.style.display = currentStatsTab === 'by-emcee' ? 'block' : 'none';
-
             loadStatsData();
         });
     });
 
-    // Stats filter listeners
     document.getElementById('yearFilter').addEventListener('change', loadStatsData);
     document.getElementById('divisionStatsFilter').addEventListener('change', loadStatsData);
-    document.getElementById('emceeStatsFilter').addEventListener('change', loadStatsData);
+    document.getElementById('emceeStatsFilter').addEventListener('change', loadStatsData);\n    document.getElementById('divisionStatsFilter').addEventListener('change', loadStatsData);
 }
 
-// Start app
 init();

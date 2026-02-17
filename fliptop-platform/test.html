@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head><title>Test</title></head>
+<body>
+<h1>Testing API...</h1>
+<pre id="output">Loading...</pre>
+<script>
+const API_BASE = '/';
+
+async function fetchAPI(endpoint) {
+    try {
+        const resp = await fetch(API_BASE + 'api/' + endpoint);
+        return await resp.json();
+    } catch(e) {
+        return null;
+    }
+}
+
+async function test() {
+    const data = await fetchAPI('emcees?limit=2');
+    if (data && data.emcees) {
+        document.getElementById('output').textContent = 'Success! Loaded ' + data.emcees.length + ' emcees';
+    } else {
+        document.getElementById('output').textContent = 'Failed: ' + JSON.stringify(data);
+    }
+}
+test();
+</script>
+</body>
+</html>

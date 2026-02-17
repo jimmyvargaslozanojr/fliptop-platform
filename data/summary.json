@@ -1,0 +1,898 @@
+{
+  "timestamp": "2026-02-16T23:46:13.592Z",
+  "totalScraped": 178,
+  "totalFailed": 0,
+  "emcees": [
+    {
+      "name": "2khelle",
+      "url": "https://www.fliptop.com.ph/emcees/2khelle",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "3rdy",
+      "url": "https://www.fliptop.com.ph/emcees/3rdy",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "abra",
+      "url": "https://www.fliptop.com.ph/emcees/abra",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "aklas",
+      "url": "https://www.fliptop.com.ph/emcees/aklas",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "akt",
+      "url": "https://www.fliptop.com.ph/emcees/akt",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "andy-g",
+      "url": "https://www.fliptop.com.ph/emcees/andy-g",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "antonym",
+      "url": "https://www.fliptop.com.ph/emcees/antonym",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "apekz",
+      "url": "https://www.fliptop.com.ph/emcees/apekz",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "apoc",
+      "url": "https://www.fliptop.com.ph/emcees/apoc",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "arma",
+      "url": "https://www.fliptop.com.ph/emcees/arma",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "article-clipted",
+      "url": "https://www.fliptop.com.ph/emcees/article-clipted",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "asser",
+      "url": "https://www.fliptop.com.ph/emcees/asser",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "atoms",
+      "url": "https://www.fliptop.com.ph/emcees/atoms",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "aubrey",
+      "url": "https://www.fliptop.com.ph/emcees/aubrey",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "bagsik",
+      "url": "https://www.fliptop.com.ph/emcees/bagsik",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "ban",
+      "url": "https://www.fliptop.com.ph/emcees/ban",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "bassilyo",
+      "url": "https://www.fliptop.com.ph/emcees/bassilyo",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "batang-rebelde",
+      "url": "https://www.fliptop.com.ph/emcees/batang-rebelde",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "batas",
+      "url": "https://www.fliptop.com.ph/emcees/batas",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "bisente",
+      "url": "https://www.fliptop.com.ph/emcees/bisente",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "blackleaf",
+      "url": "https://www.fliptop.com.ph/emcees/blackleaf",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "blkd",
+      "url": "https://www.fliptop.com.ph/emcees/blkd",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "blzr",
+      "url": "https://www.fliptop.com.ph/emcees/blzr",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "bonet",
+      "url": "https://www.fliptop.com.ph/emcees/bonet",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "c-quence",
+      "url": "https://www.fliptop.com.ph/emcees/c-quence",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "caspher",
+      "url": "https://www.fliptop.com.ph/emcees/caspher",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "castillo",
+      "url": "https://www.fliptop.com.ph/emcees/castillo",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "caytriyu",
+      "url": "https://www.fliptop.com.ph/emcees/caytriyu",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "cerberus",
+      "url": "https://www.fliptop.com.ph/emcees/cerberus",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "class-g",
+      "url": "https://www.fliptop.com.ph/emcees/class-g",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "cnine",
+      "url": "https://www.fliptop.com.ph/emcees/cnine",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "cool-kidd",
+      "url": "https://www.fliptop.com.ph/emcees/cool-kidd",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "crazymix",
+      "url": "https://www.fliptop.com.ph/emcees/crazymix",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "crhyme",
+      "url": "https://www.fliptop.com.ph/emcees/crhyme",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "cripli",
+      "url": "https://www.fliptop.com.ph/emcees/cripli",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "crispy-fetus",
+      "url": "https://www.fliptop.com.ph/emcees/crispy-fetus",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "cygnus",
+      "url": "https://www.fliptop.com.ph/emcees/cygnus",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "daddie-joe-d",
+      "url": "https://www.fliptop.com.ph/emcees/daddie-joe-d",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "damsa",
+      "url": "https://www.fliptop.com.ph/emcees/damsa",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "dave-denver",
+      "url": "https://www.fliptop.com.ph/emcees/dave-denver",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "deadline",
+      "url": "https://www.fliptop.com.ph/emcees/deadline",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "dello",
+      "url": "https://www.fliptop.com.ph/emcees/dello",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "dhuski",
+      "url": "https://www.fliptop.com.ph/emcees/dhuski",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "dilim",
+      "url": "https://www.fliptop.com.ph/emcees/dilim",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "dodong-saypa",
+      "url": "https://www.fliptop.com.ph/emcees/dodong-saypa",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "don-pao",
+      "url": "https://www.fliptop.com.ph/emcees/don-pao",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "dopee",
+      "url": "https://www.fliptop.com.ph/emcees/dopee",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "dosage",
+      "url": "https://www.fliptop.com.ph/emcees/dosage",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "duma",
+      "url": "https://www.fliptop.com.ph/emcees/duma",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "ej-power",
+      "url": "https://www.fliptop.com.ph/emcees/ej-power",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "elbiz",
+      "url": "https://www.fliptop.com.ph/emcees/elbiz",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "emar-industriya",
+      "url": "https://www.fliptop.com.ph/emcees/emar-industriya",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "empithri",
+      "url": "https://www.fliptop.com.ph/emcees/empithri",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "fangs",
+      "url": "https://www.fliptop.com.ph/emcees/fangs",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "fernie",
+      "url": "https://www.fliptop.com.ph/emcees/fernie",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "flict-g",
+      "url": "https://www.fliptop.com.ph/emcees/flict-g",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "frooz",
+      "url": "https://www.fliptop.com.ph/emcees/frooz",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "fukuda",
+      "url": "https://www.fliptop.com.ph/emcees/fukuda",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "g-clown",
+      "url": "https://www.fliptop.com.ph/emcees/g-clown",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "gameboy",
+      "url": "https://www.fliptop.com.ph/emcees/gameboy",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "gi",
+      "url": "https://www.fliptop.com.ph/emcees/gi",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "gl",
+      "url": "https://www.fliptop.com.ph/emcees/gl",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "goriong-talas",
+      "url": "https://www.fliptop.com.ph/emcees/goriong-talas",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "harlem",
+      "url": "https://www.fliptop.com.ph/emcees/harlem",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "hazky",
+      "url": "https://www.fliptop.com.ph/emcees/hazky",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "hearty",
+      "url": "https://www.fliptop.com.ph/emcees/hearty",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "hespero",
+      "url": "https://www.fliptop.com.ph/emcees/hespero",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "icaruz",
+      "url": "https://www.fliptop.com.ph/emcees/icaruz",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "ilaya",
+      "url": "https://www.fliptop.com.ph/emcees/ilaya",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "illtimate",
+      "url": "https://www.fliptop.com.ph/emcees/illtimate",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "invictus",
+      "url": "https://www.fliptop.com.ph/emcees/invictus",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "j-blaque",
+      "url": "https://www.fliptop.com.ph/emcees/j-blaque",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "j-king",
+      "url": "https://www.fliptop.com.ph/emcees/j-king",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "j-skeelz",
+      "url": "https://www.fliptop.com.ph/emcees/j-skeelz",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "jamy-sykes",
+      "url": "https://www.fliptop.com.ph/emcees/jamy-sykes",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "jawz",
+      "url": "https://www.fliptop.com.ph/emcees/jawz",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "jdee",
+      "url": "https://www.fliptop.com.ph/emcees/jdee",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "jonas",
+      "url": "https://www.fliptop.com.ph/emcees/jonas",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "jp",
+      "url": "https://www.fliptop.com.ph/emcees/jp",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "jr-zero",
+      "url": "https://www.fliptop.com.ph/emcees/jr-zero",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "k-ram",
+      "url": "https://www.fliptop.com.ph/emcees/k-ram",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "kalixs",
+      "url": "https://www.fliptop.com.ph/emcees/kalixs",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "kamandag",
+      "url": "https://www.fliptop.com.ph/emcees/kamandag",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "karisma",
+      "url": "https://www.fliptop.com.ph/emcees/karisma",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "katana",
+      "url": "https://www.fliptop.com.ph/emcees/katana",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "kenzer",
+      "url": "https://www.fliptop.com.ph/emcees/kenzer",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "khen-magat",
+      "url": "https://www.fliptop.com.ph/emcees/khen-magat",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "kjap",
+      "url": "https://www.fliptop.com.ph/emcees/kjap",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "kregga",
+      "url": "https://www.fliptop.com.ph/emcees/kregga",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "kris-delano",
+      "url": "https://www.fliptop.com.ph/emcees/kris-delano",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "lanzeta",
+      "url": "https://www.fliptop.com.ph/emcees/lanzeta",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "lax-hartis",
+      "url": "https://www.fliptop.com.ph/emcees/lax-hartis",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "lemi",
+      "url": "https://www.fliptop.com.ph/emcees/lemi",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "lhipkram",
+      "url": "https://www.fliptop.com.ph/emcees/lhipkram",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "lil-sisa",
+      "url": "https://www.fliptop.com.ph/emcees/lil-sisa",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "liljohn",
+      "url": "https://www.fliptop.com.ph/emcees/liljohn",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "lilstrocks",
+      "url": "https://www.fliptop.com.ph/emcees/lilstrocks",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "lilweng",
+      "url": "https://www.fliptop.com.ph/emcees/lilweng",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "loonie",
+      "url": "https://www.fliptop.com.ph/emcees/loonie",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "lord-manuel",
+      "url": "https://www.fliptop.com.ph/emcees/lord-manuel",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "luxuria",
+      "url": "https://www.fliptop.com.ph/emcees/luxuria",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "m-zhayt",
+      "url": "https://www.fliptop.com.ph/emcees/m-zhayt",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "makii",
+      "url": "https://www.fliptop.com.ph/emcees/makii",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "malupit",
+      "url": "https://www.fliptop.com.ph/emcees/malupit",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "manda-baliw",
+      "url": "https://www.fliptop.com.ph/emcees/manda-baliw",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "marichu",
+      "url": "https://www.fliptop.com.ph/emcees/marichu",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "marshall-bonifacio",
+      "url": "https://www.fliptop.com.ph/emcees/marshall-bonifacio",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "mastafeat",
+      "url": "https://www.fliptop.com.ph/emcees/mastafeat",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "maxford",
+      "url": "https://www.fliptop.com.ph/emcees/maxford",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "melchrist",
+      "url": "https://www.fliptop.com.ph/emcees/melchrist",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "meraj",
+      "url": "https://www.fliptop.com.ph/emcees/meraj",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "mhot",
+      "url": "https://www.fliptop.com.ph/emcees/mhot",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "mikidee",
+      "url": "https://www.fliptop.com.ph/emcees/mikidee",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "mimack",
+      "url": "https://www.fliptop.com.ph/emcees/mimack",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "mistah-lefty",
+      "url": "https://www.fliptop.com.ph/emcees/mistah-lefty",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "murdz",
+      "url": "https://www.fliptop.com.ph/emcees/murdz",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "nadnad",
+      "url": "https://www.fliptop.com.ph/emcees/nadnad",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "nathan",
+      "url": "https://www.fliptop.com.ph/emcees/nathan",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "negatibo",
+      "url": "https://www.fliptop.com.ph/emcees/negatibo",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "negho-gy",
+      "url": "https://www.fliptop.com.ph/emcees/negho-gy",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "nikki",
+      "url": "https://www.fliptop.com.ph/emcees/nikki",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "numerhus",
+      "url": "https://www.fliptop.com.ph/emcees/numerhus",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "og-ulo",
+      "url": "https://www.fliptop.com.ph/emcees/og-ulo",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "onaks",
+      "url": "https://www.fliptop.com.ph/emcees/onaks",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "one-lie-ace",
+      "url": "https://www.fliptop.com.ph/emcees/one-lie-ace",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "onlison",
+      "url": "https://www.fliptop.com.ph/emcees/onlison",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "pamoso",
+      "url": "https://www.fliptop.com.ph/emcees/pamoso",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "pen-pluma",
+      "url": "https://www.fliptop.com.ph/emcees/pen-pluma",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "philos",
+      "url": "https://www.fliptop.com.ph/emcees/philos",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "pistolero",
+      "url": "https://www.fliptop.com.ph/emcees/pistolero",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "plaridhel",
+      "url": "https://www.fliptop.com.ph/emcees/plaridhel",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "plazma",
+      "url": "https://www.fliptop.com.ph/emcees/plazma",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "poison13",
+      "url": "https://www.fliptop.com.ph/emcees/poison13",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "pricetagg",
+      "url": "https://www.fliptop.com.ph/emcees/pricetagg",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "prince-rhyme",
+      "url": "https://www.fliptop.com.ph/emcees/prince-rhyme",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "protege",
+      "url": "https://www.fliptop.com.ph/emcees/protege",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "psykadelik",
+      "url": "https://www.fliptop.com.ph/emcees/psykadelik",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "range",
+      "url": "https://www.fliptop.com.ph/emcees/range",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "rapido",
+      "url": "https://www.fliptop.com.ph/emcees/rapido",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "rich-flo",
+      "url": "https://www.fliptop.com.ph/emcees/rich-flo",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "righteous1",
+      "url": "https://www.fliptop.com.ph/emcees/righteous1",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "romano",
+      "url": "https://www.fliptop.com.ph/emcees/romano",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "rudic",
+      "url": "https://www.fliptop.com.ph/emcees/rudic",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "ruffian",
+      "url": "https://www.fliptop.com.ph/emcees/ruffian",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "saint-ice",
+      "url": "https://www.fliptop.com.ph/emcees/saint-ice",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "sak-maestro",
+      "url": "https://www.fliptop.com.ph/emcees/sak-maestro",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "sayadd",
+      "url": "https://www.fliptop.com.ph/emcees/sayadd",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "shaboy",
+      "url": "https://www.fliptop.com.ph/emcees/shaboy",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "shehyee",
+      "url": "https://www.fliptop.com.ph/emcees/shehyee",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "shernan",
+      "url": "https://www.fliptop.com.ph/emcees/shernan",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "sibil",
+      "url": "https://www.fliptop.com.ph/emcees/sibil",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "sickreto",
+      "url": "https://www.fliptop.com.ph/emcees/sickreto",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "sincity",
+      "url": "https://www.fliptop.com.ph/emcees/sincity",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "sinio",
+      "url": "https://www.fliptop.com.ph/emcees/sinio",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "sirdeo",
+      "url": "https://www.fliptop.com.ph/emcees/sirdeo",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "sixth-threat",
+      "url": "https://www.fliptop.com.ph/emcees/sixth-threat",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "skarm",
+      "url": "https://www.fliptop.com.ph/emcees/skarm",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "slockone",
+      "url": "https://www.fliptop.com.ph/emcees/slockone",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "smugglaz",
+      "url": "https://www.fliptop.com.ph/emcees/smugglaz",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "snob",
+      "url": "https://www.fliptop.com.ph/emcees/snob",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "sparo",
+      "url": "https://www.fliptop.com.ph/emcees/sparo",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "supremo",
+      "url": "https://www.fliptop.com.ph/emcees/supremo",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "supremo-mindanao",
+      "url": "https://www.fliptop.com.ph/emcees/supremo-mindanao",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "sur-henyo",
+      "url": "https://www.fliptop.com.ph/emcees/sur-henyo",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "target",
+      "url": "https://www.fliptop.com.ph/emcees/target",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "tatz-maven",
+      "url": "https://www.fliptop.com.ph/emcees/tatz-maven",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "thike",
+      "url": "https://www.fliptop.com.ph/emcees/thike",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "tipsy-d",
+      "url": "https://www.fliptop.com.ph/emcees/tipsy-d",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "towpher",
+      "url": "https://www.fliptop.com.ph/emcees/towpher",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "tulala",
+      "url": "https://www.fliptop.com.ph/emcees/tulala",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "tweng",
+      "url": "https://www.fliptop.com.ph/emcees/tweng",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "vitrum",
+      "url": "https://www.fliptop.com.ph/emcees/vitrum",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "wrathsol",
+      "url": "https://www.fliptop.com.ph/emcees/wrathsol",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "yuniko",
+      "url": "https://www.fliptop.com.ph/emcees/yuniko",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "zaito",
+      "url": "https://www.fliptop.com.ph/emcees/zaito",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "zaki",
+      "url": "https://www.fliptop.com.ph/emcees/zaki",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "zend-luke",
+      "url": "https://www.fliptop.com.ph/emcees/zend-luke",
+      "hasProfilePicture": true
+    },
+    {
+      "name": "zero-hour",
+      "url": "https://www.fliptop.com.ph/emcees/zero-hour",
+      "hasProfilePicture": true
+    }
+  ],
+  "errors": []
+}
