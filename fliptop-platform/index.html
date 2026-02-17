@@ -15,6 +15,7 @@
             <nav>
                 <button class="active" data-view="emcees">Emcees</button>
                 <button data-view="videos">Videos</button>
+                <button data-view="stats">Stats</button>
             </nav>
         </div>
     </header>
@@ -57,6 +58,48 @@
         <div id="videosView" style="display: none;">
             <div class="videos-grid" id="videosGrid">
                 <div class="loading">Loading videos...</div>
+            </div>
+        </div>
+
+        <div id="statsView" style="display: none;">
+            <div class="stats-section">
+                <div class="stats-tabs">
+                    <button class="stats-tab active" data-tab="by-year">By Year</button>
+                    <button class="stats-tab" data-tab="by-division">By Division</button>
+                    <button class="stats-tab" data-tab="by-emcee">By Emcee</button>
+                </div>
+
+                <div class="stats-filters" id="statsFilters">
+                    <select class="filter-select" id="yearFilter">
+                        <option value="">All Years</option>
+                    </select>
+                    <select class="filter-select" id="divisionStatsFilter">
+                        <option value="">All Divisions</option>
+                    </select>
+                    <select class="filter-select" id="emceeStatsFilter">
+                        <option value="">Select Emcee</option>
+                    </select>
+                </div>
+
+                <div class="videos-grid" id="statsGrid">
+                    <div class="loading">Loading stats...</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="statsView" style="display: none;">
+            <div class="stats-tabs">
+                <button class="stats-tab active" data-tab="by-year">By Year</button>
+                <button class="stats-tab" data-tab="by-division">By Division</button>
+                <button class="stats-tab" data-tab="by-emcee">By Emcee</button>
+            </div>
+
+            <div class="stats-filters" id="statsFilters">
+                <!-- Dynamic filters based on selected tab -->
+            </div>
+
+            <div class="stats-content" id="statsContent">
+                <div class="loading">Loading stats...</div>
             </div>
         </div>
     </main>

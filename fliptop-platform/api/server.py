@@ -208,6 +208,306 @@ class APIHandler(BaseHTTPRequestHandler):
                 'divisions': divisions
             })
 
+        # Get most viewed videos by year
+        elif path == '/api/stats/by-year':
+            year = query.get('year', [None])[0]
+            limit = int(query.get('limit', [10])[0])
+
+            cursor = video_conn.cursor()
+
+            if year:
+                cursor.execute("""
+                    SELECT id, videoId, title, publishedAt, thumbnail, views, likes, comments, url,
+                           substr(publishedAt, 1, 4) as year
+                    FROM videos
+                    WHERE substr(publishedAt, 1, 4) = ?
+                    ORDER BY views DESC LIMIT ?
+                """, (year, limit))
+            else:
+                cursor.execute("""
+                    SELECT id, videoId, title, publishedAt, thumbnail, views, likes, comments, url,
+                           substr(publishedAt, 1, 4) as year
+                    FROM videos
+                    ORDER BY views DESC LIMIT ?
+                """, (limit,))
+
+            rows = cursor.fetchall()
+            videos = []
+            for row in rows:
+                videos.append({
+                    'id': row[0],
+                    'videoId': row[1],
+                    'title': row[2],
+                    'publishedAt': row[3],
+                    'thumbnail': row[4],
+                    'views': row[5],
+                    'likes': row[6],
+                    'comments': row[7],
+                    'url': row[8],
+                    'year': row[9]
+                })
+
+            # Get available years
+            cursor.execute("SELECT DISTINCT substr(publishedAt, 1, 4) as year FROM videos ORDER BY year DESC")
+            years = [row[0] for row in cursor.fetchall()]
+
+            self.send_json({'videos': videos, 'years': years})
+
+        # Get most viewed videos by division
+        elif path == '/api/stats/by-division':
+            division = query.get('division', [None])[0]
+            limit = int(query.get('limit', [10])[0])
+
+            cursor = video_conn.cursor()
+
+            if division:
+                # Find emcees in this division and search for their battles
+                emcee_cursor = emcees_conn.cursor()
+                emcee_cursor.execute("SELECT name FROM emcees WHERE division = ?", (division,))
+                emcees_in_div = [row[0] for row in emcee_cursor.fetchall()]
+
+                videos = []
+                for emcee in emcees_in_div:
+                    cursor.execute("""
+                        SELECT id, videoId, title, publishedAt, thumbnail, views, likes, comments, url
+                        FROM videos
+                        WHERE title LIKE ? OR title LIKE ?
+                        ORDER BY views DESC LIMIT 5
+                    """, (f'%{emcee}% vs %', f'%vs {emcee}%'))
+                    for row in cursor.fetchall():
+                        videos.append({
+                            'id': row[0],
+                            'videoId': row[1],
+                            'title': row[2],
+                            'publishedAt': row[3],
+                            'thumbnail': row[4],
+                            'views': row[5],
+                            'likes': row[6],
+                            'comments': row[7],
+                            'url': row[8]
+                        })
+
+                # Sort by views and limit
+                videos.sort(key=lambda x: x['views'], reverse=True)
+                videos = videos[:limit]
+            else:
+                videos = []
+
+            # Get divisions
+            emcee_cursor = emcees_conn.cursor()
+            emcee_cursor.execute("SELECT DISTINCT division FROM emcees WHERE division IS NOT NULL AND division != ''")
+            divisions = [row[0] for row in emcee_cursor.fetchall()]
+
+            self.send_json({'videos': videos, 'divisions': divisions})
+
+        # Get most viewed videos by emcee
+        elif path == '/api/stats/by-emcee':
+            emcee_name = query.get('emcee', [None])[0]
+            limit = int(query.get('limit', [10])[0])
+
+            cursor = video_conn.cursor()
+
+            if emcee_name:
+                cursor.execute("""
+                    SELECT id, videoId, title, publishedAt, thumbnail, views, likes, comments, url
+                    FROM videos
+                    WHERE title LIKE ? OR title LIKE ?
+                    ORDER BY views DESC LIMIT ?
+                """, (f'%{emcee_name}% vs %', f'%vs {emcee_name}%', limit))
+            else:
+                # Get top emcees by total views across their videos
+                emcee_cursor = emcees_conn.cursor()
+                emcee_cursor.execute("SELECT name FROM emcees ORDER BY name")
+                emcees = [row[0] for row in emcee_cursor.fetchall()]
+
+                emcee_views = []
+                for emcee in emcees:
+                    cursor.execute("""
+                        SELECT SUM(views) FROM videos
+                        WHERE title LIKE ? OR title LIKE ?
+                    """, (f'%{emcee}% vs %', f'%vs {emcee}%'))
+                    total = cursor.fetchone()[0] or 0
+                    if total > 0:
+                        emcee_views.append({'name': emcee, 'total_views': total})
+
+                emcee_views.sort(key=lambda x: x['total_views'], reverse=True)
+                emcee_views = emcee_views[:limit]
+
+                self.send_json({'emcees': emcee_views})
+                return
+
+            rows = cursor.fetchall()
+            videos = []
+            for row in rows:
+                videos.append({
+                    'id': row[0],
+                    'videoId': row[1],
+                    'title': row[2],
+                    'publishedAt': row[3],
+                    'thumbnail': row[4],
+                    'views': row[5],
+                    'likes': row[6],
+                    'comments': row[7],
+                    'url': row[8]
+                })
+
+            self.send_json({'videos': videos, 'emcee': emcee_name})
+
+        # Get available years for stats
+        elif path == '/api/stats/years':
+            cursor = video_conn.cursor()
+            cursor.execute("SELECT DISTINCT substr(publishedAt, 1, 4) as year FROM videos ORDER BY year DESC")
+            years = [row[0] for row in cursor.fetchall()]
+            self.send_json({'years': years})
+
+        # Get most viewed videos per year
+        elif path == '/api/stats/year':
+            year = query.get('year', [None])[0]
+            limit = int(query.get('limit', [10])[0])
+
+            cursor = video_conn.cursor()
+
+            if year:
+                cursor.execute("""
+                    SELECT id, videoId, title, publishedAt, thumbnail, views, likes, comments, url
+                    FROM videos
+                    WHERE strftime('%Y', publishedAt) = ?
+                    ORDER BY views DESC LIMIT ?
+                """, (year, limit))
+            else:
+                # Get top videos grouped by year
+                cursor.execute("""
+                    SELECT id, videoId, title, publishedAt, thumbnail, views, likes, comments, url,
+                           strftime('%Y', publishedAt) as year
+                    FROM videos
+                    WHERE publishedAt IS NOT NULL AND publishedAt != ''
+                    ORDER BY year DESC, views DESC LIMIT ?
+                """, (limit,))
+
+            rows = cursor.fetchall()
+            videos = []
+            for row in rows:
+                videos.append({
+                    'id': row[0],
+                    'videoId': row[1],
+                    'title': row[2],
+                    'publishedAt': row[3],
+                    'thumbnail': row[4],
+                    'views': row[5],
+                    'likes': row[6],
+                    'comments': row[7],
+                    'url': row[8],
+                    'year': row[9] if len(row) > 9 else None
+                })
+
+            # Get available years
+            cursor.execute("""
+                SELECT DISTINCT strftime('%Y', publishedAt) as year
+                FROM videos
+                WHERE publishedAt IS NOT NULL AND publishedAt != ''
+                ORDER BY year DESC
+            """)
+            years = [row[0] for row in cursor.fetchall()]
+
+            self.send_json({'videos': videos, 'years': years})
+
+        # Get most viewed per division
+        elif path == '/api/stats/division':
+            division = query.get('division', [None])[0]
+            limit = int(query.get('limit', [10])[0])
+
+            cursor = video_conn.cursor()
+
+            # First get all emcees with their divisions
+            emcee_cursor = emcees_conn.cursor()
+            emcee_cursor.execute("SELECT name, division FROM emcees WHERE division IS NOT NULL AND division != ''")
+            emcee_data = {row[0].lower(): row[1] for row in emcee_cursor.fetchall()}
+
+            if division:
+                # Filter videos by division
+                matching_emcees = [name for name, div in emcee_data.items() if div == division]
+                videos = []
+                for emcee_name in matching_emcees:
+                    cursor.execute("""
+                        SELECT id, videoId, title, publishedAt, thumbnail, views, likes, comments, url
+                        FROM videos
+                        WHERE title LIKE ? OR title LIKE ?
+                        ORDER BY views DESC LIMIT ?
+                    """, (f'%{emcee_name}% vs %', f'%vs {emcee_name}%', limit))
+                    for row in cursor.fetchall():
+                        videos.append({
+                            'id': row[0],
+                            'videoId': row[1],
+                            'title': row[2],
+                            'publishedAt': row[3],
+                            'thumbnail': row[4],
+                            'views': row[5],
+                            'likes': row[6],
+                            'comments': row[7],
+                            'url': row[8]
+                        })
+
+                # Sort by views and limit
+                videos = sorted(videos, key=lambda x: x['views'], reverse=True)[:limit]
+                self.send_json({'videos': videos, 'division': division})
+            else:
+                # Get all divisions
+                divisions = list(set(emcee_data.values()))
+                result = {'divisions': sorted(divisions)}
+                self.send_json(result)
+
+        # Get most viewed per emcee
+        elif path == '/api/stats/emcee':
+            emcee_name = query.get('name', [None])[0]
+            limit = int(query.get('limit', [10])[0])
+
+            cursor = video_conn.cursor()
+
+            if emcee_name:
+                cursor.execute("""
+                    SELECT id, videoId, title, publishedAt, thumbnail, views, likes, comments, url
+                    FROM videos
+                    WHERE title LIKE ? OR title LIKE ?
+                    ORDER BY views DESC LIMIT ?
+                """, (f'%{emcee_name}% vs %', f'%vs {emcee_name}%', limit))
+                rows = cursor.fetchall()
+
+                videos = []
+                for row in rows:
+                    videos.append({
+                        'id': row[0],
+                        'videoId': row[1],
+                        'title': row[2],
+                        'publishedAt': row[3],
+                        'thumbnail': row[4],
+                        'views': row[5],
+                        'likes': row[6],
+                        'comments': row[7],
+                        'url': row[8]
+                    })
+
+                self.send_json({'videos': videos, 'emcee': emcee_name})
+            else:
+                # Get emcees sorted by their total video views
+                emcee_cursor = emcees_conn.cursor()
+                emcee_cursor.execute("SELECT id, name FROM emcees ORDER BY name")
+                emcees = [{'id': row[0], 'name': row[1]} for row in emcee_cursor.fetchall()]
+
+                # Calculate total views per emcee
+                emcee_views = []
+                for emcee in emcees:
+                    cursor.execute("""
+                        SELECT COALESCE(SUM(views), 0) as total_views
+                        FROM videos
+                        WHERE title LIKE ? OR title LIKE ?
+                    """, (f'%{emcee["name"]}% vs %', f'%vs {emcee["name"]}%'))
+                    total = cursor.fetchone()[0]
+                    if total > 0:
+                        emcee_views.append({'id': emcee['id'], 'name': emcee['name'], 'total_views': total})
+
+                emcee_views = sorted(emcee_views, key=lambda x: x['total_views'], reverse=True)[:limit]
+                self.send_json({'emcees': emcee_views})
+
         else:
             self.send_json({'error': 'Not found'}, 404)
 
