@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlipTop Community Platform</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>FlipTop<span>PH</span></h1>
+            </div>
+            <nav>
+                <button class="active" data-view="emcees">Emcees</button>
+                <button data-view="videos">Videos</button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="stats-bar">
+        <div class="container">
+            <div class="stats-grid" id="statsGrid">
+                <div class="stat-item">
+                    <h3 id="totalEmcees">-</h3>
+                    <p>Total Emcees</p>
+                </div>
+                <div class="stat-item">
+                    <h3 id="totalVideos">-</h3>
+                    <p>Battle Videos</p>
+                </div>
+                <div class="stat-item">
+                    <h3 id="totalViews">-</h3>
+                    <p>Total Views</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="container">
+        <div class="toolbar" id="toolbar">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search...">
+            </div>
+            <select class="filter-select" id="divisionFilter">
+                <option value="">All Divisions</option>
+            </select>
+        </div>
+
+        <div id="emceesView">
+            <div class="emcees-grid" id="emceesGrid">
+                <div class="loading">Loading emcees...</div>
+            </div>
+        </div>
+
+        <div id="videosView" style="display: none;">
+            <div class="videos-grid" id="videosGrid">
+                <div class="loading">Loading videos...</div>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal" id="emceeModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img id="modalProfileImg" src="" alt="">
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h2 id="modalName"></h2>
+                <p class="hometown" id="modalHometown"></p>
+                <div class="tags" id="modalTags"></div>
+                <p class="description" id="modalDescription"></p>
+                <div class="accomplishments" id="modalAccomplishments"></div>
+                <div class="social-links" id="modalSocial"></div>
+                <div class="battles-section">
+                    <h3>Recent Battles</h3>
+                    <div class="battles-list" id="modalBattles"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
