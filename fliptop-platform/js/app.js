@@ -272,7 +272,7 @@ async function loadStatsView() {
 }
 
 async function loadStatsData() {
-    const grid = document.getElementById('statsGrid');
+    const grid = document.getElementById('statsVideosGrid');
     grid.innerHTML = '<div class="loading">Loading stats...</div>';
 
     let endpoint = '';
@@ -317,7 +317,7 @@ async function loadStatsData() {
         return;
     }
 
-    renderVideos(videos, 'statsGrid');
+    renderVideos(videos, 'statsVideosGrid');
 }
 
 // Reusable render function
